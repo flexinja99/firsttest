@@ -17,4 +17,5 @@ public class TowerInfo : ScriptableObject
     public int buildPrice;
     public int sellPrice;
     public Sprite icon;
+    
 }
