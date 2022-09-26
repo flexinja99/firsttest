@@ -27,7 +27,7 @@ public class HitTypePopText : MonoBehaviour     // MonoBehaviour: 유니티에서 생�
             if (_isFading)
                 StopCoroutine(_coroutine);             // StopCoroutine : 코루틴 중단
             RefreshText(value);                        //  Refresh : (새로고침)를 위한 UI
-            _coroutine = StartCoroutine(E_Fading());   // value : 특정값만 가진 함수
+            _coroutine = StartCoroutine(E_Fading());   // value : 특정값만 가진 함수, 숫자 매기는 값
             _hitType = value;
         }
     }
