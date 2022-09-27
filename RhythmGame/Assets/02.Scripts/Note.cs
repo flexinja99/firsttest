@@ -21,7 +21,7 @@ public class Note : MonoBehaviour   // MonoBehaviour: 유니티에서 생성하는 모든 �
                 ScoringText.instance.score += Constants.SCORE_BAD;
                 break;
             case HitType.Miss:
-                ScoringText.instance.score += Constants.SCORE_MISS;       // ?? 
+                ScoringText.instance.score += Constants.SCORE_MISS;      
                 break;
             case HitType.Good:
                 ScoringText.instance.score += Constants.SCORE_GOOD;
