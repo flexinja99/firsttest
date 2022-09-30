@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Threading;
-using Unity.VisualScripting.FullSerializer;
-
 public class TowerUI : MonoBehaviour
 {
     public static TowerUI instance;
@@ -14,9 +11,8 @@ public class TowerUI : MonoBehaviour
     [SerializeField] private Button _sellButton;
     [SerializeField] private TMP_Text _upgradeCostText;
     [SerializeField] private Vector3 _offset = Vector3.up * 3.0f;
-    
-    private int _upgradeCost;   
-    private bool _upgradeAllfordable => _upgradeCost <= Player.Instance.money;
+    private int _upgradeCost;
+    private bool _upgradeAffordable => _upgradeCost <= Player.instance.money;
 
     public void SetUp(Tower tower)
     {
@@ -28,36 +24,32 @@ public class TowerUI : MonoBehaviour
             _upgradeButton.gameObject.SetActive(true);
             _upgradeCost = nextLevelTower.info.buildPrice;
             _upgradeCostText.text = nextLevelTower.info.buildPrice.ToString();
-            RefeshUpgradeCostTextColor();
 
-
+            if (_upgradeAffordable) 
+                _upgradeCostText.color = Color.black;
+            else 
+                _upgradeCostText.color = Color.red;
 
             _upgradeButton.onClick.RemoveAllListeners();
-            _upgradeButton.onClick.AddListener(() =>
-            {
-                if (_upgradeAllfordable)
-                {
-                    Upgrade(tower, nextLevelTower);
-                    SetUp(nextLevelTower);
-                }
-              
-            });
+            _upgradeButton.onClick.AddListener(() => {
 
-            
-           
-            _upgradeCost = nextLevelTower.info.buildPrice;
-            _upgradeCostText.text = nextLevelTower.info.buildPrice.ToString();
-            RefeshUpgradeCostTextColor();
+                if (_upgradeAffordable)
+                {
+                    Player.instance.money -= _upgradeCost;
+                    SetUp(Upgrade(tower, nextLevelTower));
+                }
+            });
         }
         else
         {
             _upgradeButton.gameObject.SetActive(false);
         }
 
-        //Sell 버튼 세팅
+        // Sell 버튼 세팅
+        _sellButton.onClick.RemoveAllListeners();
         _sellButton.onClick.AddListener(() =>
         {
-            Player.Instance.money += tower.info.sellPrice;
+            Player.instance.money += tower.info.sellPrice;
             tower.node.Clear();
             gameObject.SetActive(false);
         });
@@ -71,31 +63,29 @@ public class TowerUI : MonoBehaviour
         _upgradeCost = -1;
     }
 
-    public void Upgrade(Tower before, Tower after)
+    public Tower Upgrade(Tower before, Tower after)
     {
-        if (before == null)
-            return;
+        Tower towerBuilt = null;
 
-        Node node = before.node;
-        node.Clear();
-        node.TryBuildTowerHere($"{after.info.type}{after.info.upgradeLevel}");
+        if (before != null)
+        {
+            Node node = before.node;
+            node.Clear();
+            node.TryBuildTowerHere($"{after.info.type}{after.info.upgradeLevel}", out towerBuilt);
+        }
 
-
+        return towerBuilt;
     }
 
-    public void Sell()
-    {
-
-    }
 
     private void Awake()
     {
         instance = this;
     }
 
-    private void  Start()
+    private void Start()
     {
-        Player.Instance.OnMoneyChanged += RefeshUpgradeCostTextColor;
+        Player.instance.OnMoneyChanged += RefreshUpgradeCostTextColor;
         gameObject.SetActive(false);
     }
 
@@ -104,11 +94,11 @@ public class TowerUI : MonoBehaviour
         Clear();
     }
 
-    private void RefeshUpgradeCostTextColor()
+    private void RefreshUpgradeCostTextColor(int money)
     {
-        if (_upgradeAllfordable)
-            _upgradeCostText.color = Color.red;
-        else
+        if (_upgradeAffordable)
             _upgradeCostText.color = Color.black;
+        else
+            _upgradeCostText.color = Color.red;
     }
 }

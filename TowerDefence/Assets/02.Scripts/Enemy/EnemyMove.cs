@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     private Transform _tr;
-
+    private Enemy _enemy;
     public float speed = 1.0f;
 
     private Pathfinder _pathFinder;
@@ -20,16 +20,28 @@ public class EnemyMove : MonoBehaviour
     private Vector3 _dir;
     private float _posTolerance = 0.05f;
 
+    public void SetStartEnd(Transform start, Transform end)
+    {
+        _start = start;
+        _end = end;
+    }
+
+
     private void Awake()
     {
         _tr = GetComponent<Transform>();
+        _enemy = GetComponent<Enemy>();
         _pathFinder = GetComponent<Pathfinder>();
         _originY = _tr.position.y;
     }
 
     private void Start()
     {
-        _wayPoints = _pathFinder.FindOptimizedPath(_start, _end);
+        if (_pathFinder.TryFindOptimizedPath(_start, _end, out _wayPoints) == false)
+        {
+            throw new System.Exception("EnemyMove : 길 찾기 실패 !");
+        }
+
         _nextWayPoint = _wayPoints[0];
     }
 
@@ -59,7 +71,7 @@ public class EnemyMove : MonoBehaviour
     private void OnReachedToEnd()
     {
         Player.instance.life -= 1;
-        Destroy(gameObject);
+        _enemy.Die();
     }
 
     public bool TryGetNextPoint(int curretPointIndex, out Transform nextPoint)
@@ -73,5 +85,5 @@ public class EnemyMove : MonoBehaviour
 
         return nextPoint;
     }
-   
+
 }

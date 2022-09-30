@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class Node : MonoBehaviour
@@ -8,7 +7,6 @@ public class Node : MonoBehaviour
     public bool IsTowerExist => _towerBuilt;
     private Tower _towerBuilt;
     private Renderer _renderer;
-
     private Color _originalColor;
     [SerializeField] private Color _buildAvailableColor;
     [SerializeField] private Color _buildNotAvailableColor;
@@ -20,10 +18,10 @@ public class Node : MonoBehaviour
         _towerBuilt = null;
     }
 
-    //건설하고싶은걸 만드는것
-    public bool TryBuildTowerHere(string towerName)
+    public bool TryBuildTowerHere(string towerName, out Tower towerBuilt)
     {
         bool isOK = false;
+        towerBuilt = null;
 
         if (IsTowerExist)
         {
@@ -31,15 +29,15 @@ public class Node : MonoBehaviour
             return false;
         }
 
-        if(TowerAssets.instance.TryGetTower(towerName,out GameObject tower))
+        if (TowerAssets.instance.TryGetTower(towerName, out GameObject tower))
         {
-           GameObject built =  Instantiate(tower,
-                        transform.position + Vector3.up * 0.5f, 
-                        Quaternion.identity,
-                        transform);
-
+            GameObject built = Instantiate(tower, 
+                                           transform.position + Vector3.up * 0.5f,
+                                           Quaternion.identity,
+                                           transform);
             _towerBuilt = built.GetComponent<Tower>();
             _towerBuilt.node = this;
+            towerBuilt = _towerBuilt;
             isOK = true;
         }
         return isOK;
@@ -53,13 +51,11 @@ public class Node : MonoBehaviour
 
     private void OnMouseEnter()
     {
-
         if (IsTowerExist)
             _renderer.material.color = _buildNotAvailableColor;
         else
             _renderer.material.color = _buildAvailableColor;
 
-        _renderer.material.color = _buildAvailableColor;
         NodeManager.mouseOnNode = this;
     }
 
