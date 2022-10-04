@@ -6,6 +6,7 @@ using UnityEngine.WSA;
 [CreateAssetMenu(fileName = "LevelInfo", menuName = "TowerDefence/LevelInfo")]
 public class LevelInfo : ScriptableObject
 {
+    public int level;
     public int lifeInit;
     public int moneyInit;
     public List<StageInfo> stagesInfo;

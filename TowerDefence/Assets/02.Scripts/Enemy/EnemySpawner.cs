@@ -16,8 +16,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private SkipButtonUI _skipButtonUIPrefab;
     private SkipButtonUI[] _skipButtonsBuffer = new SkipButtonUI[10];
     public event Action<int> OnStageFinished;
-    private bool _spawnFinishedTrigger;
 
+    private bool _spawnFinishedTrigger;
     private bool spawnFinishedTrigger
     {
         set
@@ -55,12 +55,12 @@ public class EnemySpawner : MonoBehaviour
         enemiesSpawnedList.Add(new List<GameObject>());
     }
 
-    public void DestoryAllSkipButtons()
+    public void DestroyAllSkipButtons()
     {
-        for(int i = 0; i < stageList.Count; i++)
+        for (int i = 0; i < _skipButtonsBuffer.Length; i++)
         {
             if (_skipButtonsBuffer[i] != null)
-                Destroy(_skipButtonsBuffer[i]);
+                Destroy(_skipButtonsBuffer[i].gameObject);
         }
     }
 
@@ -68,19 +68,20 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = stageList.Count - 1; i >= 0; i--)
         {
-            bool isSpawnFinished = true;
+            bool tmpSpawnFinished = true;
             for (int j = 0; j < stageList[i].enemySpawnDataList.Count; j++)
             {
-
-                if (delayTimersList[i][j] < 0) { }
+                if (spawnCountersList[i][j] > 0)
                 {
-                    if (timersList[i][j] < 0)
+                    tmpSpawnFinished = false;
+
+                    if (delayTimersList[i][j] < 0)
                     {
-                        if (spawnCountersList[i][j] > 0)
+                        if (timersList[i][j] < 0)
                         {
                             GameObject go = Instantiate(original: stageList[i].enemySpawnDataList[j].poolElement.prefab,
-                                                    position: spawnPoints[i].position,//바꿔야함
-                                                    rotation: Quaternion.identity);
+                                                        position: spawnPoints[stageList[i].enemySpawnDataList[j].spawnPointIndex].position,
+                                                        rotation: Quaternion.identity);
 
                             enemiesSpawnedList[i].Add(go);
 
@@ -105,57 +106,52 @@ public class EnemySpawner : MonoBehaviour
 
                             timersList[i][j] = stageList[i].enemySpawnDataList[j].term;
                             spawnCountersList[i][j]--;
-                            isSpawnFinished = false;
+                        }
+                        else
+                        {
+                            timersList[i][j] -= Time.deltaTime;
                         }
                     }
                     else
                     {
-                        timersList[i][j] -= Time.deltaTime;
+                        delayTimersList[i][j] -= Time.deltaTime;
                     }
-                }
-                else
-                {
-                    delayTimersList[i][j] -= Time.deltaTime;
                 }
             }
 
-            if (isSpawnFinished)
+            if (stageList[i].id == GamePlay.instance.currentStageId)
             {
-                PopUpSkipButtons();
+                spawnFinishedTrigger = tmpSpawnFinished;
             }
         }
     }
+
     private void PopUpSkipButtons()
     {
         LevelInfo levelInfo = GamePlay.instance.levelInfo;
         int currentStage = GamePlay.instance.currentStage;
 
-        //다음 스테이지 없으면 리턴
-        if ( currentStage >= levelInfo.stagesInfo.Count - 1)
+        // 다음 스테이지 없으면 리턴
+        if (currentStage >= levelInfo.stagesInfo.Count - 1)
             return;
 
-
         HashSet<int> spawnPointIndexSet = new HashSet<int>();
-
         foreach (var enemySpawnData in levelInfo.stagesInfo[currentStage + 1].enemySpawnDataList)
         {
             spawnPointIndexSet.Add(enemySpawnData.spawnPointIndex);
         }
+
         foreach (var index in spawnPointIndexSet)
         {
             _skipButtonsBuffer[index] = Instantiate(_skipButtonUIPrefab,
                                         spawnPoints[index].position + Vector3.up,
                                         _skipButtonUIPrefab.transform.rotation);
 
-
             _skipButtonsBuffer[index].AddButtonOnClickListener(() =>
             {
                 GamePlay.instance.NextStage();
-                DestoryAllSkipButtons();
-
-
+                DestroyAllSkipButtons();
             });
         }
-        
     }
 }

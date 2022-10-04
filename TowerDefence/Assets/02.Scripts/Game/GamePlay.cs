@@ -27,10 +27,11 @@ public class GamePlay : MonoBehaviour
     private Dictionary<int, bool> _stageFinishedPairs;
     private float _nextStageDelay = 0.5f;
 
-
-
     [SerializeField] private EnemySpawner _spawner;
-    [SerializeField] private GameObject _skipButtonPrefab;
+    [SerializeField] private LevelCompletePanel _levelCompletePanelPrefab;
+    [SerializeField] private LevelFailedPanel _levelFailedPanelPrefab;
+   
+
 
     public void StartLevel()
     {
@@ -38,10 +39,20 @@ public class GamePlay : MonoBehaviour
             state = States.SetUpLevel;
     }
 
+ 
     public void NextStage()
     {
-        if (state == States.WaitForStageFinished)
+        if (currentStage < levelInfo.stagesInfo.Count - 1 &&
+            state == States.WaitForStageFinished)
             state = States.NextStage;
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+            Time.timeScale = 0.0f;
+        else
+            Time.timeScale = 1.0f;  
     }
 
     private void Awake()
@@ -75,6 +86,7 @@ public class GamePlay : MonoBehaviour
             case States.SetUpLevel:
                 {
                     Pathfinder.SetNodeMap();
+                    Player.instance.OnLifeChanged += CheckLevelFailed;
                     state = States.PlayStartEvents;
                 }
                 break;
@@ -100,16 +112,26 @@ public class GamePlay : MonoBehaviour
                 break;
             case States.NextStage:
                 {
-                    _spawner.DestoryAllSkipButtons();
                     currentStage++;
                     state = States.PlayStage;
                 }
                 break;
             case States.LevelCompleted:
+                {
+                    Instantiate(_levelCompletePanelPrefab).SetUp(levelInfo.level,
+                                                                  (float)Player.instance.life / levelInfo.lifeInit);
+                    state = States.WaitForUser;
+                }
                 break;
             case States.LevelFailed:
+                {
+                    Instantiate(_levelFailedPanelPrefab).SetUp(levelInfo.level,
+                                                                   (float)Player.instance.life / levelInfo.lifeInit);
+                    state = States.WaitForUser;
+                }
                 break;
             case States.WaitForUser:
+                //noting to do
                 break;
             default:
                 break;
@@ -143,8 +165,8 @@ public class GamePlay : MonoBehaviour
             // 현재 끝나기를 기다리던 스테이지가 끝난거면 다음 스테이지 진행
             else if (stageId == currentStageId)
             {
+                _spawner.DestroyAllSkipButtons();
                 Invoke("NextStage", _nextStageDelay);
-                
             }
         }
     }
@@ -164,6 +186,11 @@ public class GamePlay : MonoBehaviour
     {
         state = States.LevelCompleted;
     }
+    public void CheckLevelFailed(int life)
+    {
+        if (life <= 0)
+            state = States.LevelFailed;
 
-   
+    }
+
 }
