@@ -30,8 +30,6 @@ public class GamePlay : MonoBehaviour
     [SerializeField] private EnemySpawner _spawner;
     [SerializeField] private LevelCompletePanel _levelCompletePanelPrefab;
     [SerializeField] private LevelFailedPanel _levelFailedPanelPrefab;
-   
-
 
     public void StartLevel()
     {
@@ -39,7 +37,6 @@ public class GamePlay : MonoBehaviour
             state = States.SetUpLevel;
     }
 
- 
     public void NextStage()
     {
         if (currentStage < levelInfo.stagesInfo.Count - 1 &&
@@ -47,12 +44,12 @@ public class GamePlay : MonoBehaviour
             state = States.NextStage;
     }
 
-    private void OnApplicationPause(bool pause)
+    private void Pause(bool pause)
     {
         if (pause)
             Time.timeScale = 0.0f;
         else
-            Time.timeScale = 1.0f;  
+            Time.timeScale = 1.0f;
     }
 
     private void Awake()
@@ -118,20 +115,23 @@ public class GamePlay : MonoBehaviour
                 break;
             case States.LevelCompleted:
                 {
+                    Pause(true);
                     Instantiate(_levelCompletePanelPrefab).SetUp(levelInfo.level,
-                                                                  (float)Player.instance.life / levelInfo.lifeInit);
+                                                                 (float)Player.instance.life / levelInfo.lifeInit,
+                                                                 () => Pause(false));
                     state = States.WaitForUser;
                 }
                 break;
             case States.LevelFailed:
                 {
+                    Pause(true);
                     Instantiate(_levelFailedPanelPrefab).SetUp(levelInfo.level,
-                                                                   (float)Player.instance.life / levelInfo.lifeInit);
+                                                               () => Pause(false));
                     state = States.WaitForUser;
                 }
                 break;
             case States.WaitForUser:
-                //noting to do
+                // nothiong to do
                 break;
             default:
                 break;
@@ -186,11 +186,12 @@ public class GamePlay : MonoBehaviour
     {
         state = States.LevelCompleted;
     }
-    public void CheckLevelFailed(int life)
+
+    private void CheckLevelFailed(int life)
     {
         if (life <= 0)
             state = States.LevelFailed;
-
     }
+
 
 }

@@ -14,7 +14,7 @@ public class LevelCompletePanel : MonoBehaviour
     [SerializeField] private Button _ReplayButton;
     [SerializeField] private Button _NextButton;
 
-    public void SetUp(int level, float lifeRatio)
+    public void SetUp(int level, float lifeRatio, System.Action value)
     {
         _level.text = level.ToString();
 
