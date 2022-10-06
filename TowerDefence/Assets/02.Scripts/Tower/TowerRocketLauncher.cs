@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerMachineGun : Tower
+
+public class TowerRocketLauncher : MonoBehaviour
 {
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform[] _firePoints;
@@ -14,7 +15,7 @@ public class TowerMachineGun : Tower
     protected override void Update()
     {
         base.Update();
-        Reload(); 
+        Reload();
     }
 
     private void Reload()
@@ -37,22 +38,8 @@ public class TowerMachineGun : Tower
     {
         for (int i = 0; i < _firePoints length; i++)
         {
-            GameObject bullet = Object .instance.spawn
+            GameObject bullet = Object.instance.spawn
         }
     }
 
-    private void Attack()
-    {
-        for (int i = 0; i < _firePoints.Length; i++)
-        {
-            GameObject bullet = Instantiate(_bulletPrefab, _firePoints[i].position, Quaternion.identity);
-            bullet.GetComponent<ProjectileBullet>()
-                .SetUp(target,
-                       3.0f,
-                       _damage,
-                       false,
-                       LayerMask.NameToLayer("Ground"),
-                       _targetLayer);
-        }
-    }
 }

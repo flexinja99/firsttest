@@ -1,9 +1,7 @@
 
-using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
@@ -14,81 +12,107 @@ public class ObjectPool : MonoBehaviour
         get
         {
             if (_instance == null)
-                _instance = Instantiate(Resources.Load<ObjectPool>("ObjectPool"));
+                _instance = Instantiate(Resources.Load<ObjectPool>("Assets/ObjectPool"));
             return _instance;
         }
     }
 
-   private List<PoolElement> poolElements = new List<PoolElement>();    
-    private List<GameObject> poolObjects = new List<GameObject>();
+    private List<PoolElement> poolElements = new List<PoolElement>();
     private Dictionary<string, Queue<GameObject>> spawnedQueuePairs = new Dictionary<string, Queue<GameObject>>();
 
-    //=============================
-    //==public methods ===
-    //===============================
+    //=========================================================
+    //******************* Public Methods **********************
+    //=========================================================
 
     /// <summary>
-    ///  필요한 객체와 갯수 발주
+    /// 필요한 객체와 갯수 발주 
     /// </summary>
     /// <param name="poolElement"></param>
-
     public void AddPoolElement(PoolElement poolElement)
         => poolElements.Add(poolElement);
 
-
+    /// <summary>
+    /// 발주받은 모든 객체 생성
+    /// </summary>
     public void InstantiateAllPoolElements()
     {
         foreach (PoolElement poolElement in poolElements)
         {
-            spawnedQueuePairs.Add(poolElement.name, new Queue<GameObject>());
-            for (int i =0; i < poolElement.num; i++)
+            if (spawnedQueuePairs.ContainsKey(poolElement.name) == false)
+                spawnedQueuePairs.Add(poolElement.name, new Queue<GameObject>());
+
+            for (int i = 0; i < poolElement.num; i++)
             {
                 InstantiatePoolElement(poolElement);
             }
         }
-
     }
 
-    public GameObject Spawn(string tag, Vector3 spawnPoint)
+    /// <summary>
+    /// 창고에 쌓아놨던 발주품목중에서 하나 꺼내가지고 빌려준다
+    /// </summary>
+    /// <param name="name">빌려갈 품목 이름</param>
+    /// <param name="spawnPoint">배송 위치</param>
+    /// <returns></returns>
+    public GameObject Spawn(string name, Vector3 spawnPoint)
     {
         if (spawnedQueuePairs.ContainsKey(name) == false)
             return null;
 
+        // 생성해놨던 객체들을 모두 다 빌려줬을때 새로 생성함
         if (spawnedQueuePairs[name].Count <= 0)
         {
             PoolElement poolElement = poolElements.Find(element => element.name == name);
-            if(poolElement != null)
+            if (poolElement != null)
             {
-                for (int i = 0; i < Math.Ceiling(poolElement.num)); i++)
+                // 원래 소환 갯수에 비례해서 많이 미리 생성해놓자
+                for (int i = 0; i < Math.Ceiling(Math.Log10(poolElement.num)); i++)
                 {
                     InstantiatePoolElement(poolElement);
                 }
-                
             }
         }
 
         GameObject go = spawnedQueuePairs[name].Dequeue();
         go.transform.position = spawnPoint;
+        go.transform.rotation = Quaternion.identity;
         go.transform.SetParent(null);
+        go.SetActive(true);
         return go;
     }
 
+    /// <summary>
+    /// 다쓴거 창고 반납
+    /// </summary>
+    /// <param name="obj">반납할 상품</param>
     public void Return(GameObject obj)
     {
         if (spawnedQueuePairs.ContainsKey(obj.name) == false)
         {
-            Debug.LogError($"[ObjectPool] :(obj.name) 는 왜가져왔어? 내가 빌려준적이 없는데?");
+            Debug.LogError($"[ObjectPool] : {obj.name} 는 왜가져왔어? 내가 빌려준적이 없는데?");
             return;
         }
 
         obj.transform.SetParent(transform);
         obj.transform.localPosition = Vector3.zero;
         spawnedQueuePairs[obj.name].Enqueue(obj);
+        obj.SetActive(false);
+        RearrangeSiblings(obj);
     }
 
-    //================
-    //=
-    //====================
+    //=========================================================
+    //******************* Private Methods *********************
+    //=========================================================
+
+    private void Awake()
+    {
+        transform.position = new Vector3(5000, 5000, 5000);
+    }
+
+    IEnumerator E_Return(GameObject obj, float sec)
+    {
+        yield return new WaitForSeconds(sec);
+    }
 
     private GameObject InstantiatePoolElement(PoolElement poolElement)
     {
@@ -96,8 +120,10 @@ public class ObjectPool : MonoBehaviour
         go.name = poolElement.name;
         spawnedQueuePairs[poolElement.name].Enqueue(go);
         go.SetActive(false);
+        RearrangeSiblings(go);
         return go;
     }
+
     /// <summary>
     /// 
     /// </summary>
@@ -112,43 +138,7 @@ public class ObjectPool : MonoBehaviour
                 return;
             }
         }
+
         obj.transform.SetAsLastSibling();
     }
 }
-
-
-
-public class Player
-{
-    
-    int Hp  // hp 프로퍼티
-    {
-        set
-        {
-            if (value <= 0)
-            {
-              
-                Manager.Instance.Finish();
-            }
-
-
-        }
-    }
-}
-
-public class Manager
-{
-    public static Manager Instance; 
-
-
-    Manager()
-    {
-        Instance = this;
-    }
-
-    public void Finish()
-    {
-        
-    }
-}
-

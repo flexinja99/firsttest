@@ -64,6 +64,21 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        LevelInfo levelInfo = GamePlay.instance.levelInfo;
+
+        foreach (StageInfo stageInfo in levelInfo.stagesInfo)
+        {
+            foreach (EnemySpawnData enemySpawnData in stageInfo.enemySpawnDataList)
+            {
+                ObjectPool.instance.AddPoolElement(enemySpawnData.poolElement);
+            }
+        }
+
+        ObjectPool.instance.InstantiateAllPoolElements();
+    }
+
     private void Update()
     {
         for (int i = stageList.Count - 1; i >= 0; i--)
@@ -79,9 +94,12 @@ public class EnemySpawner : MonoBehaviour
                     {
                         if (timersList[i][j] < 0)
                         {
-                            GameObject go = Instantiate(original: stageList[i].enemySpawnDataList[j].poolElement.prefab,
-                                                        position: spawnPoints[stageList[i].enemySpawnDataList[j].spawnPointIndex].position,
-                                                        rotation: Quaternion.identity);
+                            //GameObject go = Instantiate(original: stageList[i].enemySpawnDataList[j].poolElement.prefab,
+                            //                           position: spawnPoints[stageList[i].enemySpawnDataList[j].spawnPointIndex].position,
+                            //                           rotation: Quaternion.identity);
+
+                            GameObject go = ObjectPool.instance.Spawn(stageList[i].enemySpawnDataList[j].poolElement.name,
+                                                                      spawnPoints[stageList[i].enemySpawnDataList[j].spawnPointIndex].position);
 
                             enemiesSpawnedList[i].Add(go);
 
@@ -90,14 +108,17 @@ public class EnemySpawner : MonoBehaviour
                             {
                                 int tmpIdx = stageList.FindIndex(stageInfo => stageInfo.id == tmpId);
 
-                                enemiesSpawnedList[tmpIdx].Remove(go);
-                                if (enemiesSpawnedList[tmpIdx].Count == 0)
+                                if (tmpIdx >= 0)
                                 {
-                                    OnStageFinished(tmpId);
-                                    stageList.RemoveAt(tmpIdx);
-                                    timersList.RemoveAt(tmpIdx);
-                                    delayTimersList.RemoveAt(tmpIdx);
-                                    spawnCountersList.RemoveAt(tmpIdx);
+                                    enemiesSpawnedList[tmpIdx].Remove(go);
+                                    if (enemiesSpawnedList[tmpIdx].Count == 0)
+                                    {
+                                        OnStageFinished(tmpId);
+                                        stageList.RemoveAt(tmpIdx);
+                                        timersList.RemoveAt(tmpIdx);
+                                        delayTimersList.RemoveAt(tmpIdx);
+                                        spawnCountersList.RemoveAt(tmpIdx);
+                                    }
                                 }
                             };
 
@@ -152,6 +173,16 @@ public class EnemySpawner : MonoBehaviour
                 GamePlay.instance.NextStage();
                 DestroyAllSkipButtons();
             });
+        }
+    }
+
+    private void OnEnemyDie(GameObject go, in id)
+    {
+        int tmpIdX = stageList.FindIndex(stageInfo => stageInfo.id == id);
+
+        if (tmpIdX >= 0)
+        {
+
         }
     }
 }
