@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour 
 {
     private int _hp;
     public int hp
@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
 
             _hp = value;
             _hpBar.value = (float)_hp / hpMax;
+            OnHPChanged?.Invoke(_hp);
 
             if (_hp <= 0)
                 Die();
@@ -26,6 +27,7 @@ public class Enemy : MonoBehaviour
     public int hpMax;
     [SerializeField] private Slider _hpBar;
     public event Action OnDie;
+    public event Action<int> OnHPChanged;
 
     public void Die()
     {
