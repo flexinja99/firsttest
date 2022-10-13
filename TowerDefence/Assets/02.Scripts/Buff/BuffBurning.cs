@@ -6,6 +6,7 @@ public class BuffBurning<T> : IBuff<T>
 {
     private int _damage;
     private int _term;
+    private int _timer;
 
     public BuffBurning(int damage, float term)
     {
@@ -30,6 +31,9 @@ public class BuffBurning<T> : IBuff<T>
 
     public void OnDuration(T target)
     {
-        throw new System.NotImplementedException();
+        if (_timer < 0)
+        {
+            if (target is IHp )
+        }
     }
 }

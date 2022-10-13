@@ -32,7 +32,8 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         OnDie();
-        Destroy(gameObject);
+        buffManager
+      ObjectPool.instance.Return(gameObject);
     }
 
     private void Awake()
