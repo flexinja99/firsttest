@@ -109,6 +109,7 @@ public class Pathfinder : MonoBehaviour
         {
             /* µð¹ö±ë¿ë
             List<List<Transform>> nodePathList = new List<List<Transform>>();
+
             for (int i = 0; i < _pathList.Count; i++)
             {
                 string pathString = "";
@@ -183,7 +184,7 @@ public class Pathfinder : MonoBehaviour
     private static bool BFS(Coord start, Coord end)
     {
         bool isFinished = false;
-        List<KeyValuePair<Coord, Coord>> parentPairs = new List<KeyValuePair<Coord, Coord>>();
+        List<KeyValuePair<Coord,Coord>> parentPairs = new List<KeyValuePair<Coord, Coord>>();
         Queue<Coord> queue = new Queue<Coord>();
         queue.Enqueue(start);
         parentPairs.Add(new KeyValuePair<Coord, Coord>(Coord.error, start));
@@ -241,7 +242,7 @@ public class Pathfinder : MonoBehaviour
         {
             _tmpPathForDFS.Add(GetNode(start));
             _tmpPathForDFS.Reverse();
-        }
+        }   
 
         return isFound;
     }
@@ -251,7 +252,7 @@ public class Pathfinder : MonoBehaviour
         bool isFound = false;
         _visited[start.y, start.x] = true;
         Debug.Log($"DFS ing... {start.x}, {start.y}");
-
+        
         Coord next;
         for (int i = 0; i < _direction.GetLength(1); i++)
         {
@@ -259,7 +260,7 @@ public class Pathfinder : MonoBehaviour
             next.x = start.x + _direction[1, i];
 
             // Å½»ö À§Ä¡°¡ ¸ÊÀ» ¹þ¾î³ª´ÂÁö
-            if ((next.y < 0 || next.y >= _map.GetLength(0)) ||
+            if ((next.y < 0 || next.y >= _map.GetLength(0))||
                 (next.x < 0 || next.x >= _map.GetLength(1)))
                 continue;
 
@@ -279,7 +280,7 @@ public class Pathfinder : MonoBehaviour
                 return true;
             }
             else
-            {
+            {    
                 isFound = DFSLoop(next, end);
                 if (isFound)
                 {
@@ -338,8 +339,8 @@ public class Pathfinder : MonoBehaviour
         Coord coord = TransformToCoord(node);
         for (int i = 0; i < _map.GetLength(1); i++)
             for (int j = 0; j < _map.GetLength(0); j++)
-                if (_map[j, i].coord == coord)
-                    return _map[j, i];
+                if (_map[j,i].coord == coord)
+                    return _map[j,i];
 
         return new NodePair() { coord = Coord.error, node = null, type = NodeType.None };
     }
@@ -351,4 +352,5 @@ public class Pathfinder : MonoBehaviour
 
         return _map[coord.y, coord.x].node;
     }
+
 }

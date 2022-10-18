@@ -5,8 +5,9 @@ using UnityEngine;
 public class BuffBurning<T> : IBuff<T>
 {
     private int _damage;
-    private int _term;
-    private int _timer;
+    private float _term;
+    private float _timer;
+
 
     public BuffBurning(int damage, float term)
     {
@@ -15,7 +16,6 @@ public class BuffBurning<T> : IBuff<T>
         _timer = _term;
     }
 
-
     public void OnActive(T target)
     {
         
@@ -23,17 +23,23 @@ public class BuffBurning<T> : IBuff<T>
 
     public void OnDeactive(T target)
     {
-        if (target is IHp)
-        {
-
-        }
+         
     }
 
     public void OnDuration(T target)
     {
         if (_timer < 0)
         {
-            if (target is IHp )
+            if (target is IHp)
+            {
+                ((IHp)target).hp -= _damage;
+                _timer = _term;
+                Debug.Log($"{target} is burning. current hp : {((IHp)target).hp}");
+            }
+        }
+        else
+        {
+            _timer -= Time.deltaTime;
         }
     }
 }

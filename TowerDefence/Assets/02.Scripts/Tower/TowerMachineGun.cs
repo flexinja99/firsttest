@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TowerMachineGun : Tower
 {
-    [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform[] _firePoints;
     [SerializeField] private int _damage;
 
@@ -35,24 +34,17 @@ public class TowerMachineGun : Tower
 
     private void Attack()
     {
-        for (int i = 0; i < _firePoints length; i++)
-        {
-            GameObject bullet = Object .instance.spawn
-        }
-    }
-
-    private void Attack()
-    {
         for (int i = 0; i < _firePoints.Length; i++)
         {
-            GameObject bullet = Instantiate(_bulletPrefab, _firePoints[i].position, Quaternion.identity);
+            GameObject bullet = ObjectPool.instance.Spawn("Bullet", _firePoints[i].position);
+
             bullet.GetComponent<ProjectileBullet>()
                 .SetUp(target,
-                       3.0f,
+                       15.0f,
                        _damage,
-                       false,
-                       LayerMask.NameToLayer("Ground"),
-                       _targetLayer);
+                       true,
+                       touchLayer,
+                       targetLayer);
         }
     }
 }

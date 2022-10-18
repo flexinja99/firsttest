@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class TowerRocketLauncher : MonoBehaviour
+public class TowerRocketLauncher : Tower
 {
-    [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform[] _firePoints;
     [SerializeField] private int _damage;
 
@@ -36,10 +34,17 @@ public class TowerRocketLauncher : MonoBehaviour
 
     private void Attack()
     {
-        for (int i = 0; i < _firePoints length; i++)
+        for (int i = 0; i < _firePoints.Length; i++)
         {
-            GameObject bullet = Object.instance.spawn
+            GameObject rocket = ObjectPool.instance.Spawn("Rocket", _firePoints[i].position);
+
+            rocket.GetComponent<ProjectileRocket>()
+                .SetUp(target,
+                       10.0f,
+                       _damage,
+                       false,
+                       touchLayer,
+                       targetLayer);
         }
     }
-
 }
