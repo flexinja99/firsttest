@@ -61,7 +61,15 @@
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\MapSpawner.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scripts\Movement.cs" />
+    <Compile Include="Assets\Scripts\Charictar\Movement.cs" />
+    <Compile Include="Assets\Scripts\Charictar\IStateOfT.cs" />
+    <Compile Include="Assets\Scripts\Charictar\StateBaseOff.cs" />
+    <Compile Include="Assets\Scripts\Charictar\StateMachineForPlayer.cs" />
+    <Compile Include="Assets\Scripts\Charictar\StateMachineBaseOfT.cs" />
+    <Compile Include="Assets\Scripts\Charictar\StateMoveOff.cs" />
+    <Compile Include="Assets\Scripts\Charictar\StateIdleOff.cs" />
+    <Compile Include="Assets\Scripts\Charictar\CharacterBase.cs" />
+    <Compile Include="Assets\Scripts\Charictar\CharacterPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
