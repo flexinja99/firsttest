@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,17 +10,15 @@ public class MapUnit : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Translate(Vector3.back * 2.0f * Time.fixedDeltaTime);
+        transform.Translate(Vector3.back * 5.0f * Time.fixedDeltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("MapEnd"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("MapEnd"))
         {
             OnReachedToEnd?.Invoke();
             Destroy(gameObject);
         }
     }
-
 }
-    

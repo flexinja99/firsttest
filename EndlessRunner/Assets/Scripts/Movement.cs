@@ -1,32 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Drawing.Text;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Movement : MonoBehaviour
 {
-
     private Pos _before;
     private Pos _after;
-    private Pos _current;
+    [SerializeField] private Pos _current;
     private Vector3 _leftPos;
     private Vector3 _centerPos;
     private Vector3 _rightPos;
-    private float _moveTimer;
+    [SerializeField] private float _moveTimer;
     private float _moveTime = 0.1f;
     private bool _doMoveLeft;
     public bool doMoveLeft
     {
         set
         {
-            if (value)
+            if (value && 
+                _current != Pos.Left)
+            {
                 _moveTimer = _moveTime;
+                _doMoveLeft = value;
+            }
             else
+            {
                 _moveTimer = -1.0f;
-            _doMoveLeft = value;
+            }
         }
     }
     private bool _doMoveRight;
@@ -34,16 +35,22 @@ public class Movement : MonoBehaviour
     {
         set
         {
-            if (value)
+            if (value &&
+                _current != Pos.Right)
+            {
                 _moveTimer = _moveTime;
+                _doMoveRight = value;
+            }
             else
+            {
                 _moveTimer = -1.0f;
-            _doMoveRight = value;
+            }
         }
     }
     private bool isMovable { get; set; }
     public bool isMoving => _doMoveLeft || _doMoveRight;
     private Rigidbody _rb;
+
 
     private void Awake()
     {
@@ -58,7 +65,7 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         if (isMovable &&
-            isMoving)
+            isMoving == false)
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
                 doMoveLeft = true;
@@ -74,50 +81,47 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
-        if (_moveTimer <0)
+        if (_moveTimer < 0)
             return;
 
         if (_doMoveLeft)
         {
-            switch (_current)
-            {
-                case Pos.Left:
-                    _rb.MovePosition(Vector3.Lerp(GetVector( _leftPos, _centerPos, (1.0f - _moveTimer / _moveTimer)));
-                    break;
-                case Pos.Center:
-                    _rb.MovePosition(Vector3.Lerp(_centerPos, _rightPos, (1.0f - _moveTimer / _moveTimer))); 
-                    break;
-                case Pos.Right:
-                   
-                    break;
-                default:
-                    break;
-            }
+            _rb.MovePosition(Vector3.Lerp(GetVector(_current), GetVector(_current - 1), (1.0f - _moveTimer / _moveTime)));
+            
             _moveTimer -= Time.fixedDeltaTime;
 
             if (_moveTimer < 0)
             {
                 _current--;
+                _doMoveLeft = false;
             }
-           
         }
-      
+        else if (_doMoveRight)
+        {
+            _rb.MovePosition(Vector3.Lerp(GetVector(_current), GetVector(_current + 1), (1.0f - _moveTimer / _moveTime)));
+
+            _moveTimer -= Time.fixedDeltaTime;
+
+            if (_moveTimer < 0)
+            {
+                _current++;
+                _doMoveRight = false;
+            }
+        }
     }
-    private Vector3 GetVector3(Pos pos)
+
+    private Vector3 GetVector(Pos pos)
     {
         switch (pos)
         {
             case Pos.Left:
                 return _leftPos;
-                
             case Pos.Center:
                 return _centerPos;
-                
             case Pos.Right:
                 return _rightPos;
-                
             default:
-                break;
+                throw new System.Exception("[Movement] : wrong pos");
         }
     }
 }

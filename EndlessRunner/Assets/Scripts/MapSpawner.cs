@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum Pos
 {
     Left,
     Center,
-    Right,
+    Right
 }
+
 public class MapSpawner : MonoBehaviour
 {
     [SerializeField] private Transform _mapUnitsLeftParent;
@@ -19,7 +19,7 @@ public class MapSpawner : MonoBehaviour
     private LinkedList<MapUnit> _mapUnitsCenter = new LinkedList<MapUnit>();
     private LinkedList<MapUnit> _mapUnitsRight = new LinkedList<MapUnit>();
 
-    public MapUnit _tmpMapUnit;
+    private MapUnit _tmpMapUnit;
 
     private void Awake()
     {
@@ -37,7 +37,7 @@ public class MapSpawner : MonoBehaviour
             mapUnit.OnReachedToEnd += () =>
             {
                 _mapUnitsLeft.Remove(mapUnit);
-                Spawn(Pos. Left);
+                Spawn(Pos.Left);
             };
         }
 
@@ -116,6 +116,4 @@ public class MapSpawner : MonoBehaviour
                 break;
         }
     }
-
-
 }
