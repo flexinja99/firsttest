@@ -5,4 +5,4 @@ public class StateMove<T> : StateBase<T> where T : Enum
         : base(stateMachine, machineState)
     {
     }
-}
+}   

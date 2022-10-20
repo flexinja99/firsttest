@@ -1,10 +1,12 @@
 ﻿using System;
 public abstract class StateBase<T> : IState<T> where T : Enum
 {
+    protected AnimationManager animationManager;
     public StateBase(StateMachineBase<T> stateMachine, T machineState)
     {
         this.stateMachine = stateMachine;
         this.machineState = machineState;
+        animationManager = stateMachine.owner.GetComponent<AnimationManager>();
     }
 
     protected StateMachineBase<T> stateMachine;

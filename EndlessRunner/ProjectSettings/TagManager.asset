@@ -15,9 +15,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Player
+  - PlayerColison
+  - PlayerDetector
   - 
   - 
   - MapUnit

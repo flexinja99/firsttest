@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Unity.VisualScripting;
+using UnityEngine;
 
 public class StateMachineBase<T> where T : Enum
 {
+    public GameObject owner;
     public bool isReady;
     public T currentType;
     public StateBase<T> current;
@@ -12,6 +13,7 @@ public class StateMachineBase<T> where T : Enum
 
     public StateMachineBase()
     {
+        this.owner = owner;
         InitStates();
     }
 
