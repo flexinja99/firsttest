@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
     {
         set
         {
-            if (value && 
+            if (value &&
                 _current != Pos.Left)
             {
                 _moveTimer = _moveTime;
@@ -87,7 +87,7 @@ public class Movement : MonoBehaviour
         if (_doMoveLeft)
         {
             _rb.MovePosition(Vector3.Lerp(GetVector(_current), GetVector(_current - 1), (1.0f - _moveTimer / _moveTime)));
-            
+
             _moveTimer -= Time.fixedDeltaTime;
 
             if (_moveTimer < 0)
@@ -125,3 +125,4 @@ public class Movement : MonoBehaviour
         }
     }
 }
+

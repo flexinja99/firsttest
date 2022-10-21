@@ -14,7 +14,7 @@ public interface IState<T> where T : Enum
     }
     public Commands current { get; }
     public bool canExecute { get; }
-    
+
     public T machineState { get; }
 
     public void Execute();

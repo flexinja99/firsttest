@@ -10,11 +10,11 @@ public abstract class StateBase<T> : IState<T> where T : Enum
     }
 
     protected StateMachineBase<T> stateMachine;
-    public IState<T>.Commands current { get; private set; }
+    public IState<T>.Commands current { get; protected set; }
 
     public virtual bool canExecute => true;
 
-    public T machineState { get; private set; }
+    public T machineState { get; protected set; }
 
     public virtual void Execute()
     {
@@ -27,7 +27,7 @@ public abstract class StateBase<T> : IState<T> where T : Enum
 
         switch (current)
         {
-            case IState<T>.Commands.Idle:                
+            case IState<T>.Commands.Idle:
                 break;
             case IState<T>.Commands.Prepare:
                 MoveNext();
