@@ -343,6 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpMax: 100
+  _moveSpeed: 2
   _hpBar: {fileID: 6823693669022246126}
 --- !u!114 &8437352119733202336
 MonoBehaviour:
@@ -356,7 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eeb33fcfc3e78346bec64b819b5a7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  _offsetY: 0
   _start: {fileID: 0}
   _end: {fileID: 0}
 --- !u!54 &6951957762572327181
