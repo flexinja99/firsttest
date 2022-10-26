@@ -1,0 +1,423 @@
+Using pre-set license
+Built from '2021.3/staging' branch; Version is '2021.3.8f1 (b30333d56e81) revision 11731763'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'ko' Physical Memory: 16265 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/User/Documents/GitHub/firsttest/Tower textures
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+60034
+Successfully changed project path to: C:/Users/User/Documents/GitHub/firsttest/Tower textures
+C:/Users/User/Documents/GitHub/firsttest/Tower textures
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 61.11 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.8f1 (b30333d56e81)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/User/Documents/GitHub/firsttest/Tower textures/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1660 SUPER (ID=0x21c4)
+    Vendor:   NVIDIA
+    VRAM:     5992 MB
+    Driver:   31.0.15.1659
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56276
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002431 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 54.87 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.439 seconds
+Domain Reload Profiling:
+	ReloadAssembly (440ms)
+		BeginReloadAssembly (56ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (310ms)
+			LoadAssemblies (55ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (72ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (24ms)
+			SetupLoadedEditorAssemblies (180ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (55ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (86ms)
+				ProcessInitializeOnLoadMethodAttributes (32ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.002833 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\User\Documents\GitHub\firsttest\Tower textures\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\User\Documents\GitHub\firsttest\Tower textures\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.40 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.710 seconds
+Domain Reload Profiling:
+	ReloadAssembly (711ms)
+		BeginReloadAssembly (93ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (14ms)
+		EndReloadAssembly (541ms)
+			LoadAssemblies (66ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (179ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (34ms)
+			SetupLoadedEditorAssemblies (248ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (64ms)
+				ProcessInitializeOnLoadAttributes (157ms)
+				ProcessInitializeOnLoadMethodAttributes (21ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+Refreshing native plugins compatible for Editor in 0.58 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3377 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 27 unused Assets / (111.0 KB). Loaded Objects now: 3834.
+Memory consumption went from 116.1 MB to 116.0 MB.
+Total: 2.400000 ms (FindLiveObjects: 0.198600 ms CreateObjectMapping: 0.091500 ms MarkObjects: 2.033500 ms  DeleteObjects: 0.075600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 2556.593195 seconds.
+  path: Assets/01. Textures
+  artifactKey: Guid(7f9e15ddd8f1b29479f81bfce6ecedee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/01. Textures using Guid(7f9e15ddd8f1b29479f81bfce6ecedee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '151107694c915e2662662bd0c1dc735e') in 0.005756 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002920 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\User\Documents\GitHub\firsttest\Tower textures\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\User\Documents\GitHub\firsttest\Tower textures\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.85 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.133 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1133ms)
+		BeginReloadAssembly (302ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (9ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (1ms)
+			CreateAndSetChildDomain (123ms)
+		EndReloadAssembly (643ms)
+			LoadAssemblies (194ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (225ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (29ms)
+			SetupLoadedEditorAssemblies (233ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (12ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (50ms)
+				ProcessInitializeOnLoadAttributes (145ms)
+				ProcessInitializeOnLoadMethodAttributes (21ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.25 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3652 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 45 unused Assets / (2.3 MB). Loaded Objects now: 4092.
+Memory consumption went from 129.7 MB to 127.4 MB.
+Total: 2.873800 ms (FindLiveObjects: 0.272100 ms CreateObjectMapping: 0.117300 ms MarkObjects: 2.003600 ms  DeleteObjects: 0.480200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 131.733831 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Audio/GameMix.mixer
+  artifactKey: Guid(c40bed98f23a748f89472abe9c1a6871) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Audio/GameMix.mixer using Guid(c40bed98f23a748f89472abe9c1a6871) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a16e98ac733fefe5a328aa1528c437b7') in 0.022287 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.015095 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/ShadowCaster.mat
+  artifactKey: Guid(7f1957ba236084cfcaa1f5c9da66a68b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/ShadowCaster.mat using Guid(7f1957ba236084cfcaa1f5c9da66a68b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31384e5580082e7bc679c5a2468e215d') in 0.112201 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.549352 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Models/Levels/Enviro_Level_1.fbx
+  artifactKey: Guid(4a4f98795c1bb4f299e0a3d35e32dc0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Models/Levels/Enviro_Level_1.fbx using Guid(4a4f98795c1bb4f299e0a3d35e32dc0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a590d550c9931a10f18a0df92f258a37') in 0.338695 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Models/Levels/Enviro_Level_3.fbx
+  artifactKey: Guid(1ba446b13ace04844b8a65c7f903c2a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Models/Levels/Enviro_Level_3.fbx using Guid(1ba446b13ace04844b8a65c7f903c2a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1424bd751ca0edc21e265c02294cac7') in 0.113766 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Models/Levels/Enviro_Level_5_COL.fbx
+  artifactKey: Guid(294f92d21d8ab4241aa55b1670e20f3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Models/Levels/Enviro_Level_5_COL.fbx using Guid(294f92d21d8ab4241aa55b1670e20f3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3379d800851aa664e1570a44c6d83bd5') in 0.011681 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Models/Levels/Enviro_Level_4.fbx
+  artifactKey: Guid(87e47e3172ee14b53a135e99633fe791) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Models/Levels/Enviro_Level_4.fbx using Guid(87e47e3172ee14b53a135e99633fe791) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21e535d2219f9c72a532a52c27c205d6') in 0.148195 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Models/Player/HeadQuarters_tex_v001.tga
+  artifactKey: Guid(91ff98883d8094fbbac75c115c18f6e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Models/Player/HeadQuarters_tex_v001.tga using Guid(91ff98883d8094fbbac75c115c18f6e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb9149f8a0ec3bca206f9188c3b0310f') in 0.014248 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Models/Levels/Enviro_Level_3_COL.fbx
+  artifactKey: Guid(3584259b38f3647699aa52084d205a3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Models/Levels/Enviro_Level_3_COL.fbx using Guid(3584259b38f3647699aa52084d205a3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a597def6a9798f1d75bcee79ded7329') in 0.011371 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.055361 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Levels/Level01_Road.mat
+  artifactKey: Guid(96c827f63b5004e0583fe6ac7d168334) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Levels/Level01_Road.mat using Guid(96c827f63b5004e0583fe6ac7d168334) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83964bd96c305f858d8df6cbef01f7e1') in 0.181007 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Levels/Level04_Environment.mat
+  artifactKey: Guid(4a657ce0af6254431b1df620a2872e1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Levels/Level04_Environment.mat using Guid(4a657ce0af6254431b1df620a2872e1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '659c644fe06c2401f33d366a3ce32406') in 0.174293 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Levels/Level05_Environment.mat
+  artifactKey: Guid(9887a4dd80b104bd891b506842104b30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Levels/Level05_Environment.mat using Guid(9887a4dd80b104bd891b506842104b30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f30a145c20a0796a6ae3354c9e4b8eba') in 0.010632 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.758404 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Particles/BossHover_sprite.mat
+  artifactKey: Guid(7b3ddb10d473c439dae0a10631f93b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Particles/BossHover_sprite.mat using Guid(7b3ddb10d473c439dae0a10631f93b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3836017dde4695570acb631826a8db4') in 0.032419 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Particles/explosion_Flame.mat
+  artifactKey: Guid(f672b73decdc5432686a09bb689c7e2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Particles/explosion_Flame.mat using Guid(f672b73decdc5432686a09bb689c7e2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9ec66359aa75876120762f155f00ab6') in 0.027091 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Particles/explosion_Flame_3.mat
+  artifactKey: Guid(24ed3fddb1caa449f9026ffa1db2ee43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Particles/explosion_Flame_3.mat using Guid(24ed3fddb1caa449f9026ffa1db2ee43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee485fe64e19bfbb345413e32d636386') in 0.009028 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.167652 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Projectiles/Rocket_Projectile.mat
+  artifactKey: Guid(6456fd7e2260b45febee82488eca4496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Projectiles/Rocket_Projectile.mat using Guid(6456fd7e2260b45febee82488eca4496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08fe37a31065149ac9aef7755f549ae3') in 0.138043 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.903695 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Towers/TowerGhostInvalid.mat
+  artifactKey: Guid(a33edf12f3c0044e8ba582a16ddaae3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Towers/TowerGhostInvalid.mat using Guid(a33edf12f3c0044e8ba582a16ddaae3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '932a5fbfa9bafc4aa6dd302b25c83b1a') in 0.007954 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.599601 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/UI/HealthBarRed.mat
+  artifactKey: Guid(008790df986e3469285ea0c078de4b7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/UI/HealthBarRed.mat using Guid(008790df986e3469285ea0c078de4b7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c200924aef23c1095ca5d4703fb47efb') in 0.027058 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/UI/PlacementAreaMobileFillled.mat
+  artifactKey: Guid(b4e5a88efb50046ce888a30e73866d58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/UI/PlacementAreaMobileFillled.mat using Guid(b4e5a88efb50046ce888a30e73866d58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7019ef8a5b1c85c0e3873f7c5c62aa37') in 0.023661 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/UI/PlacementAreaMobile.mat
+  artifactKey: Guid(2b57c1ce3ed4e4adab78c5c8151fce00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/UI/PlacementAreaMobile.mat using Guid(2b57c1ce3ed4e4adab78c5c8151fce00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70cf9f66f9ccfaa742ce20406a8e9947') in 0.009287 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/UI/SinglePlacementTileFilled.mat
+  artifactKey: Guid(732c0de21fbcd4a2eaa23fe81f207c08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/UI/SinglePlacementTileFilled.mat using Guid(732c0de21fbcd4a2eaa23fe81f207c08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f2083f33c89838e2ed49cfa355755fa') in 0.167421 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.660675 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Units/Buggy_Orange_Albedo_V001.mat
+  artifactKey: Guid(3d51fdac1cf5b4c9f80488ae73e3e3cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Units/Buggy_Orange_Albedo_V001.mat using Guid(3d51fdac1cf5b4c9f80488ae73e3e3cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14d08995fcec38b7521b79f06e7837fb') in 0.017614 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Units/TankBoss_Orange_Albedo_V001.mat
+  artifactKey: Guid(48efc3760d51645329779dabd538be0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Materials/Units/TankBoss_Orange_Albedo_V001.mat using Guid(48efc3760d51645329779dabd538be0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '131d7a6ed2123567ddd32140736a43c3') in 0.013786 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 26.195905 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Gizmos/movement_node.png
+  artifactKey: Guid(5ccc01938e5544720bb77504b24471ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Gizmos/movement_node.png using Guid(5ccc01938e5544720bb77504b24471ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff5747b7d118d379143ef7c847459bee') in 0.021341 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.915752 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Data/HighQPostprocessingMenu.asset
+  artifactKey: Guid(d617d357fd7a94a898bf680233ef1e79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Data/HighQPostprocessingMenu.asset using Guid(d617d357fd7a94a898bf680233ef1e79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a17be7eb021289cb848cf17cf4052950') in 0.006627 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.684452 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Data/Agents/Hoverbuggy.asset
+  artifactKey: Guid(194678e37891244b78d3ad8b21d3f878) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Data/Agents/Hoverbuggy.asset using Guid(194678e37891244b78d3ad8b21d3f878) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e2a65e42225742781c08b44297eb352') in 0.017256 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Data/Agents/Super Hoverbuggy.asset
+  artifactKey: Guid(98b0a9cdbcd30464387e82fa5c2052a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Data/Agents/Super Hoverbuggy.asset using Guid(98b0a9cdbcd30464387e82fa5c2052a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba1191cc5a8203a7b91110c138cd491e') in 0.009815 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 16.711710 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Fonts/Roboto/Roboto-Regular.ttf
+  artifactKey: Guid(acf4716a8fa254a2589ba008c867a3bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Fonts/Roboto/Roboto-Regular.ttf using Guid(acf4716a8fa254a2589ba008c867a3bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36c6ab40b5aed031d71fd08b3af2a41c') in 0.020923 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 22.112569 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Particles/Prefabs/BuildPfx.prefab
+  artifactKey: Guid(c559c1920b5d04e6d83aa4464fba5c68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Particles/Prefabs/BuildPfx.prefab using Guid(c559c1920b5d04e6d83aa4464fba5c68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '193181d94c4d693bfaed0a19a9f2a4ff') in 0.035838 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Particles/Prefabs/RocketExplosionPfx.prefab
+  artifactKey: Guid(f43a73bac381a4517bdade908e622a9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Particles/Prefabs/RocketExplosionPfx.prefab using Guid(f43a73bac381a4517bdade908e622a9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c1f35c251fd66167dff070bc9786ee6') in 0.046564 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.810649 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Particles/Textures/BossHover_sprite.png
+  artifactKey: Guid(a168f3fb2c74046abbf9d283fffc73bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Particles/Textures/BossHover_sprite.png using Guid(a168f3fb2c74046abbf9d283fffc73bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '817fca46600a35cdf56bd69507051a5f') in 0.013024 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Particles/Textures/explosion_Flame_4.png
+  artifactKey: Guid(f114a7eb5ccbb4160ab790fcf4500e22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Particles/Textures/explosion_Flame_4.png using Guid(f114a7eb5ccbb4160ab790fcf4500e22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b31ed6ed9fdf8bc96055b44b94d458b') in 0.020432 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Particles/Textures/explosion_Smoke_2.png
+  artifactKey: Guid(b0fa4b47fee5047d6861a3412d3edf18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Particles/Textures/explosion_Smoke_2.png using Guid(b0fa4b47fee5047d6861a3412d3edf18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9aa9a6e87a4495ac8fb5ed89b4ce9dbc') in 0.009186 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/UnityTechnologies/TowerDefenseTemplate/Particles/Textures/EnergyGainGlow.png
+  artifactKey: Guid(038543adefb3c46ad8de9ba4238f40af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UnityTechnologies/TowerDefenseTemplate/Particles/Textures/EnergyGainGlow.png using Guid(038543adefb3c46ad8de9ba4238f40af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66bdf945a610e72b242ac153f6c0df6f') in 0.011266 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

@@ -28,7 +28,7 @@ MonoBehaviour:
       delay: 0
     - poolElement:
         name: TestEnemy02
-        prefab: {fileID: 3787745988532606039, guid: 198d15d90b8f2294c89179898759a174, type: 3}
+        prefab: {fileID: 9133563879837393356, guid: 0b151e4b40dfee94588ac609c863ed83, type: 3}
         num: 1
       spawnPointIndex: 0
       goalPointIndex: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
       delay: 0
     - poolElement:
         name: TestEnemy02
-        prefab: {fileID: 3787745988532606039, guid: 198d15d90b8f2294c89179898759a174, type: 3}
+        prefab: {fileID: 9133563879837393356, guid: 0b151e4b40dfee94588ac609c863ed83, type: 3}
         num: 3
       spawnPointIndex: 0
       goalPointIndex: 0
@@ -56,7 +56,7 @@ MonoBehaviour:
     enemySpawnDataList:
     - poolElement:
         name: TestEnemy01
-        prefab: {fileID: 4806451984021373556, guid: baf81d5061d87aa478614de9e321b181, type: 3}
+        prefab: {fileID: 3787745988532606039, guid: 9aca9127d69857e48a1f0c829f9922f0, type: 3}
         num: 7
       spawnPointIndex: 0
       goalPointIndex: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
       delay: 0
     - poolElement:
         name: TestEnemy02
-        prefab: {fileID: 3787745988532606039, guid: 198d15d90b8f2294c89179898759a174, type: 3}
+        prefab: {fileID: 9133563879837393356, guid: 0b151e4b40dfee94588ac609c863ed83, type: 3}
         num: 4
       spawnPointIndex: 0
       goalPointIndex: 0
