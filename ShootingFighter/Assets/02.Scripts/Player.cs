@@ -38,4 +38,5 @@ public class Player : MonoBehaviour
         hp = _hpMax;
         instance = this;
     }
+    
 }
