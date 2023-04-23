@@ -1,17 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-
-    public static Player instance;
-
     private float _hp;
-    public float _hpMax;
-    public Slider _hpSlider;
-
     public float hp
     {
         set
@@ -20,14 +15,50 @@ public class Enemy : MonoBehaviour
                 value = 0;
 
             _hp = value;
-            _hpSlider.value = -_hp / _hpMax;
-
-
+            hpBar.value = _hp / hpMax;
+            if (_hp <= 0)
+            {
+                GameObject effect = Instantiate(_destroyEffect, transform.position, transform.rotation);
+                Destroy(effect, 2f);
+                Destroy(gameObject);
+            }
         }
         get
         {
             return _hp;
         }
+    }
+    public float hpMax;
+    public Slider hpBar;
 
+    public float score;
+    [SerializeField] private float _moveSpeed;
+
+    [SerializeField] private LayerMask _targetLayer;
+    [SerializeField] private float _damage;
+    [SerializeField] private GameObject _destroyEffect;
+
+    private void Awake()   //awake: 일반적으로 게임이 시작되기전에 모든 변수와 게임의 상태를 초기화하기 위해서 호출된다.
+    {
+        hp = hpMax;
+    }
+
+
+    private void FixedUpdate()
+    {
+        Vector3 deltaMove = Vector3.back * _moveSpeed * Time.fixedDeltaTime;
+        transform.Translate(deltaMove);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (1 << other.gameObject.layer == _targetLayer)
+        {
+            if (other.gameObject.TryGetComponent(out Player player))
+            {
+                player.hp -= _damage;
+            }
+            Destroy(gameObject);
+        }
     }
 }

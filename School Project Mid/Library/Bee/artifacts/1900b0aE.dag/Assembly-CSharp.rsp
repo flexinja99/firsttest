@@ -347,8 +347,13 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/02.Scripts/Bullet.cs"
 "Assets/02.Scripts/Enemy.cs"
+"Assets/02.Scripts/EnemySpawner.cs"
+"Assets/02.Scripts/GameManager.cs"
 "Assets/02.Scripts/Player.cs"
+"Assets/02.Scripts/PlayerFire.cs"
 "Assets/02.Scripts/PlayerMove.cs"
+"Assets/02.Scripts/SceneMover.cs"
+"Assets/StarSparrow/Readme/Readme Files/Scripts/ReadmeStarSparrow.cs"
 -langversion:9.0
 
 /deterministic

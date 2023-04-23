@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _damage;
     [SerializeField] private GameObject _destroyEffect;
 
-    private void Awake()
+    private void Awake()   //awake: 일반적으로 게임이 시작되기전에 모든 변수와 게임의 상태를 초기화하기 위해서 호출된다.
     {
         hp = hpMax;
     }
