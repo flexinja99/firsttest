@@ -1,4 +1,5 @@
-﻿ using UnityEngine;
+﻿using System.Runtime.CompilerServices;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -75,8 +76,7 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
-        // 나의 미친 스크립트
-        public bool IsAttack = false;
+
 
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -113,6 +113,10 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
+        public GameObject arrowObject;
+        public Transform arrowPoint;
+        public GameObject playerFollowCamera;
+        public GameObject playerAimCamera;
 
         private bool IsCurrentDeviceMouse
         {
@@ -139,7 +143,7 @@ namespace StarterAssets
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            
+
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -160,18 +164,43 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            if (!IsAttack)
+
+            JumpAndGravity();
+            GroundedCheck();
+            Move();
+            AimShoot();
+
+
+
+
+
+
+
+        }
+        private void AimShoot()
+        {
+            if (_input.IsAiming && Grounded && !_input.sprint)
             {
-                JumpAndGravity();
-                GroundedCheck();
-                Move();
+                _animator.SetBool("IsAiming", _input.IsAiming);
+                _animator.SetBool("Shooting", _input.IsShooting);
+                playerFollowCamera.SetActive(false);
+                playerAimCamera.SetActive(true);
+
             }
             else
             {
-                _animator.SetBool(_animIDAttack, true);
-            }
+                _animator.SetBool("IsAiming", false);
+                _animator.SetBool("Shooting", false);
+                playerFollowCamera.SetActive(true);
+                playerAimCamera.SetActive(false);
 
-            
+            }
+        }
+
+        public void Shoot()
+        {
+           GameObject arrow = Instantiate(arrowObject, arrowPoint.position, transform.rotation);
+            arrow.GetComponent<Rigidbody>().AddForce(transform.forward *25f ,ForceMode.Impulse);
         }
 
         private void LateUpdate()
@@ -402,13 +431,7 @@ namespace StarterAssets
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("PlayerAttack"))
-            {
-                IsAttack = true;
-            }
-        }
     }
+
+      
 }
