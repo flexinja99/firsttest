@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+    public int damageAmount = 20;
     private void Start()
     {
         Destroy(gameObject, 10);
@@ -12,5 +13,11 @@ public class Arrow : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(transform.GetComponent<Rigidbody>());
+        if (other.tag == "Dragon")
+        {
+            //화살과 드래곤 같이 현실성있게
+            transform.parent = other.transform;
+            other.GetComponent<Dragon>().TakeDamage(damageAmount);
+        }
     }
 }
